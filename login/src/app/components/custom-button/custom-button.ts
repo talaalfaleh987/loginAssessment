@@ -9,11 +9,14 @@ import { ButtonStyle, ButtonType } from '../../enums/button.enum';
 export class CustomButton {
   buttonType = input<ButtonType>(ButtonType.BUTTON);
   style = input<ButtonStyle>(ButtonStyle.PRIMARY);
+
   tirggerCallBack = output<void>();
+  isDisabled = input<boolean>(false);
 
   readonly ButtonType = ButtonType;
 
   onClick(): void {
+    if (this.isDisabled()) return;
     this.tirggerCallBack.emit();
   }
 }

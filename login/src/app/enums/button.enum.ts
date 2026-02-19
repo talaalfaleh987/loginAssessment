@@ -4,7 +4,12 @@ export enum ButtonType {
   RESET,
 }
 export enum ButtonStyle {
-  // TODO: install tailwind + add colors
-  PRIMARY = 'rounded-md bg-primary text-white p-3 w-full hover:bg-primary/90 transition-colors duration-200',
-  SECONDARY = '',
+  PRIMARY = `
+    rounded-md bg-primary text-white p-3 w-full
+    hover:brightness-90
+    transition-colors duration-200
+    disabled:opacity-50
+    disabled:cursor-not-allowed
+    disabled:hover:brightness-100
+  `,
 }
