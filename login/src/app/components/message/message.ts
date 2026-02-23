@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { MessageStyle, MessageType } from '../../enums/message.enum';
+import { MessageStyle } from '../../enums/message.enum';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-message',
@@ -8,6 +8,5 @@ import { CommonModule } from '@angular/common';
 })
 export class Message {
   textMessage = input.required<string>();
-  messageType = input<MessageType>(MessageType.INFO);
   messageStyle = input<MessageStyle>(MessageStyle.ERROR);
 }

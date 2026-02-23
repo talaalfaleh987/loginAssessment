@@ -5,5 +5,6 @@ export enum MessageType {
   SUCCESS = 'success',
 }
 export enum MessageStyle {
-  ERROR = 'w-full rounded-full border-1 border-error text-error bg-errorBg px-6 py-3 flex items-center justify-center',
+  MESSAGE = 'w-full rounded-full border-2 font-semibold flex items-center justify-center px-6 py-3',
+  ERROR = MESSAGE + ' border-error text-error bg-errorBg',
 }
