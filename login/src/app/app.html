@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4 max-w-md">
+<app-input
+  [control]="form.controls.username"
+  placeholder="Enter your username"
+  [showErrorOnSubmit]="submitted"
+/>
+
+<app-input
+  [control]="form.controls.password"
+  [inputType]="InputType.PASSWORD"
+  placeholder="Enter your password"
+  [showErrorOnSubmit]="submitted"
+/>
+
+  <app-input
+    [control]="form.controls.remember"
+    [inputType]="InputType.CHECKBOX"
+    placeholder="Remember me"
+    [showErrorOnSubmit]="submitted"
+  />
+
+  <app-custom-button [buttonType]="ButtonType.SUBMIT" [style]="ButtonStyle.PRIMARY">
+    Login
+  </app-custom-button>
+</form>
