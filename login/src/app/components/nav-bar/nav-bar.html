@@ -1,0 +1,15 @@
+<header class="h-[74px] bg-header-bg flex items-center justify-between px-4 sm:px-6 shadow-md">
+  <div class="flex items-center gap-3">
+    <ng-content select="[navLeft]"></ng-content>
+  </div>
+
+  <div class="flex items-center gap-3 text-white">
+    <span class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+      <ng-content select="[navIcon]"></ng-content>
+    </span>
+
+    <span class="text-sm sm:text-base font-medium whitespace-nowrap">
+      <ng-content select="[navRight]"></ng-content>
+    </span>
+  </div>
+</header>
