@@ -1,24 +1,34 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4 max-w-md">
-<app-input
-  [control]="form.controls.username"
-  placeholder="Enter your username"
-  [showErrorOnSubmit]="submitted"
-/>
-
-<app-input
-  [control]="form.controls.password"
-  [inputType]="InputType.PASSWORD"
-  placeholder="Enter your password"
-  [showErrorOnSubmit]="submitted"
-/>
-
+<form [formGroup]="form" class="space-y-6" (ngSubmit)="onSubmit()">
+  @if (submitted() && form.invalid) {
+    <app-message
+      [textMessage]="'Please enter a correct national ID/password'"
+      [messageStyle]="MessageStyle.ERROR"
+    />
+  }
   <app-input
-    [control]="form.controls.remember"
-    [inputType]="InputType.CHECKBOX"
-    placeholder="Remember me"
-    [showErrorOnSubmit]="submitted"
+    [label]="'Username'"
+    [placeholder]="'Enter your username'"
+    [control]="form.controls.username"
+    [inputType]="InputType.TEXT"
+    [style]="InputStyle.MESSAGE"
+    [showErrorOnSubmit]="submitted()"
   />
-
+  <app-input
+    [label]="'Password'"
+    [placeholder]="'Enter your password'"
+    [control]="form.controls.password"
+    [inputType]="InputType.PASSWORD"
+    [style]="InputStyle.MESSAGE"
+    [showErrorOnSubmit]="submitted()"
+  />
+  <div class="flex items-center justify-between">
+    <app-input
+      [label]="'Remember me'"
+      [control]="form.controls.rememberMe"
+      [inputType]="InputType.CHECKBOX"
+    />
+    <a class="text-sm font-semibold" href="#">Forgot password</a>
+  </div>
   <app-custom-button [buttonType]="ButtonType.SUBMIT" [style]="ButtonStyle.PRIMARY">
     Login
   </app-custom-button>

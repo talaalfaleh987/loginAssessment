@@ -1,8 +1,13 @@
 <div class="w-full">
+  @if (!isCheckbox() && label()) {
+    <label class="block mb-2 font-semibold text-black">
+      {{ label() }}
+    </label>
+  }
   @if (isCheckbox()) {
     <label class="flex items-center gap-2">
       <input type="checkbox" class="checkbox" [formControl]="control()" />
-      <span class="text-sm">{{ placeholder() }}</span>
+      <span class="text-sm">{{ label() || placeholder() }}</span>
     </label>
   } @else {
     <input
@@ -12,10 +17,9 @@
       [formControl]="control()"
     />
   }
-  @if (showEmptyError()) {
-    <app-message
-      [textMessage]="'Please enter a correct national ID/Password '"
-      [messageStyle]="MessageStyle.ERROR"
-    />
+  @if (showError()) {
+    <span class="text-sm text-error">
+      {{ errorMessage() }}
+    </span>
   }
 </div>
