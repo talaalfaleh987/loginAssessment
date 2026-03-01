@@ -5,7 +5,12 @@ export enum InputType {
   CHECKBOX = 'checkbox',
   NUMBER = 'number',
 }
-export enum InputStyle {
-  MESSAGE = 'w-full rounded-md border-2  font-semibold flex items-center justify-center px-6 py-3',
-  ERROR = MESSAGE + ' border-error',
+export enum ValidatorType {
+  required = 'required',
+  pattern = 'pattern',
+  maxlength = 'maxlength',
+  minlength = 'minlength',
+  max = 'max',
+  min = 'min',
+  requiredTrue = 'requiredTrue',
 }
