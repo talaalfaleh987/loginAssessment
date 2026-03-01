@@ -10,16 +10,14 @@
     [placeholder]="'Enter your username'"
     [control]="form.controls.username"
     [inputType]="InputType.TEXT"
-    [style]="InputStyle.MESSAGE"
-    [showErrorOnSubmit]="submitted()"
+    [errors]="usernameErrors"
   />
   <app-input
     [label]="'Password'"
     [placeholder]="'Enter your password'"
     [control]="form.controls.password"
     [inputType]="InputType.PASSWORD"
-    [style]="InputStyle.MESSAGE"
-    [showErrorOnSubmit]="submitted()"
+    [errors]="passwordErrors"
   />
   <div class="flex items-center justify-between">
     <app-input
@@ -29,6 +27,7 @@
     />
     <a class="text-sm font-semibold" href="#">Forgot password</a>
   </div>
+
   <app-custom-button [buttonType]="ButtonType.SUBMIT" [style]="ButtonStyle.PRIMARY">
     Login
   </app-custom-button>
