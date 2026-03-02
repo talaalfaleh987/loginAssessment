@@ -1,4 +1,7 @@
-<div class="h-svh card w-full rounded bg-base-100 shadow-2xl overflow-hidden border-2">
+<div
+  class="h-svh card w-full bg-base-100 rounded-md shadow-md overflow-hidden"
+  [class.border-2]="hasBorder()"
+>
   <div class="card-body p-4 sm:p-6 md:p-8 space-y-4">
     <h2 class="text-lg font-medium text-primary">
       <ng-content select="[cardHeader]"></ng-content>
@@ -6,7 +9,11 @@
     <div class="text-base-content/80">
       <ng-content select="[cardBody]"></ng-content>
     </div>
-    <div class="pt-4 border-t-2 border-base-300 flex justify-end">
+    <div
+      class="pt-4 flex justify-end"
+      [class.border-t-2]="hasBorder()"
+      [class.border-base-300]="hasBorder()"
+    >
       <ng-content select="[cardFooter]"></ng-content>
     </div>
   </div>
