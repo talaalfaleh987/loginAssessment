@@ -1,7 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { InputType, ValidatorType } from '../../enums/input.enum';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { InputErrorMessage } from '../../models/InputErrorMessage ';
+import { InputErrorMessage } from '../../models/input-error-message';
 
 @Component({
   selector: 'app-input',
@@ -22,6 +22,7 @@ export class CustomInput {
     if (!control?.errors) return false;
     return !!control.touched;
   }
+
   hasErrorByType(validatorTypes: ValidatorType[]): boolean {
     const control = this.control();
     if (!control?.errors) return false;

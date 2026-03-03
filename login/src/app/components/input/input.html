@@ -17,10 +17,10 @@
     </span>
   }
   @if (hasError) {
-    @for (e of errors(); track $index) {
-      @if (hasErrorByType(e.types)) {
+    @for (error of errors(); track $index) {
+      @if (hasErrorByType(error.types)) {
         <span class="text-sm text-error block">
-          {{ e.message }}
+          {{ error.message }}
         </span>
       }
     }
