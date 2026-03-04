@@ -3,7 +3,7 @@
     <img src="assets/imgs/tahakom.svg" alt="tahakom" class="w-1/2" />
   </div>
   <section
-    class="flex-1 w-full md:w-1/2 bg-white flex flex-col justify-center items-center text-center px-6 py-10"
+    class="flex-1 w-full md:w-1/2 bg-white flex flex-col justify-center items-center px-6 py-10"
   >
     <header class="mb-6">
       <h1 class="font-semibold tracking-widest text-black text-[clamp(2rem,4vw,4rem)]">LOGIN</h1>
@@ -12,7 +12,45 @@
       </p>
     </header>
     <div class="w-full max-w-md">
-      <!-- TODO: reactive form goes here -->
+      <form [formGroup]="form" class="space-y-6" (ngSubmit)="onSubmit()">
+        @if (submitted() && form.invalid) {
+          <app-message
+            [textMessage]="'Please enter a correct national ID/password'"
+            [messageStyle]="MessageStyle.ERROR"
+          />
+        }
+        <div>
+          <app-input
+            [label]="'Username'"
+            [placeholder]="'Enter your username'"
+            [control]="form.controls.username"
+            [inputType]="InputType.TEXT"
+            [errors]="usernameErrors"
+          />
+        </div>
+        <div>
+          <app-input
+            [label]="'Password'"
+            [placeholder]="'Enter your password'"
+            [control]="form.controls.password"
+            [inputType]="InputType.PASSWORD"
+            [errors]="passwordErrors"
+          />
+        </div>
+        <div class="flex items-center justify-between">
+          <app-input
+            [label]="'Remember me'"
+            [control]="form.controls.rememberMe"
+            [inputType]="InputType.CHECKBOX"
+          />
+          <a class="text-sm font-semibold" href="#">Forgot password</a>
+        </div>
+        <div>
+          <app-custom-button [buttonType]="ButtonType.SUBMIT" [style]="ButtonStyle.PRIMARY">
+            Login
+          </app-custom-button>
+        </div>
+      </form>
     </div>
   </section>
 </div>
