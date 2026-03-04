@@ -1,17 +1,18 @@
 import { Component, inject, signal } from '@angular/core';
 import { InputType, ValidatorType } from '../../enums/input.enum';
 import { ButtonStyle, ButtonType } from '../../enums/button.enum';
-import { MessageStyle } from '../../enums/message.enum';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputErrorMessage } from '../../models/input-error-message';
-import { Message } from '../../components/message/message';
 import { CustomInput } from '../../components/input/input';
 import { CustomButton } from '../../components/custom-button/custom-button';
 import { Router } from '@angular/router';
+import { Constants, REGEX } from '../../core/constants';
+import { SessionStorageKeys } from '../../enums/session-storage.enum';
+import { RouterPath } from '../../core/router-paths';
 
 @Component({
   selector: 'app-login',
-  imports: [CustomButton, CustomInput, ReactiveFormsModule, Message],
+  imports: [CustomButton, CustomInput, ReactiveFormsModule],
   templateUrl: './login.html',
 })
 export class Login {
@@ -22,13 +23,14 @@ export class Login {
   readonly InputType = InputType;
   readonly ButtonType = ButtonType;
   readonly ButtonStyle = ButtonStyle;
-  readonly MessageStyle = MessageStyle;
 
   form = new FormGroup({
     username: new FormControl('', {
-      validators: [Validators.required, Validators.pattern('^[0-9]+$')],
+      validators: [Validators.required, Validators.pattern(REGEX.NUMBERS)],
     }),
-    password: new FormControl('', { validators: [Validators.required, Validators.minLength(8)] }),
+    password: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(Constants.PASSWORD_MIN_LENGTH)],
+    }),
     rememberMe: new FormControl(false),
   });
 
@@ -46,9 +48,9 @@ export class Login {
     this.form.markAllAsTouched();
     if (this.form.invalid) return;
 
-    sessionStorage.setItem('isLoggedIn', 'true');
-    sessionStorage.setItem('username', this.form.value.username ?? '');
+    sessionStorage.setItem(SessionStorageKeys.LOGGED_IN, 'true');
+    sessionStorage.setItem(SessionStorageKeys.USERNAME, this.form.value.username ?? '');
 
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl(RouterPath.Pages.HOME).then(() => window.location.reload());
   }
 }

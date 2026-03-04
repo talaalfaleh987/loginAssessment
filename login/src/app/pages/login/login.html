@@ -5,20 +5,14 @@
   <section
     class="flex-1 w-full md:w-1/2 bg-white flex flex-col justify-center items-center px-6 py-10"
   >
-    <header class="mb-6">
+    <header class="mb-6 text-center">
       <h1 class="font-semibold tracking-widest text-black text-[clamp(2rem,4vw,4rem)]">LOGIN</h1>
       <p class="mt-2 text-gray-500 text-[clamp(0.9rem,1.2vw,1.25rem)]">
         Please enter your credentials
       </p>
     </header>
     <div class="w-full max-w-md">
-      <form [formGroup]="form" class="space-y-6" (ngSubmit)="onSubmit()">
-        @if (submitted() && form.invalid) {
-          <app-message
-            [textMessage]="'Please enter a correct national ID/password'"
-            [messageStyle]="MessageStyle.ERROR"
-          />
-        }
+      <form [formGroup]="form" class="flex flex-col gap-2" (ngSubmit)="onSubmit()">
         <div>
           <app-input
             [label]="'Username'"
@@ -45,7 +39,7 @@
           />
           <a class="text-sm font-semibold" href="#">Forgot password</a>
         </div>
-        <div>
+        <div class="mt-3">
           <app-custom-button [buttonType]="ButtonType.SUBMIT" [style]="ButtonStyle.PRIMARY">
             Login
           </app-custom-button>

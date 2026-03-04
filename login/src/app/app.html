@@ -1,1 +1,12 @@
+@if (isLoggedIn) {
+  <app-nav-bar>
+    <div logo>
+      <img src="assets/imgs/tahakom.svg" alt="user profile" class="h-20" />
+    </div>
+    <div icon>
+      <img src="assets/imgs/profile.svg" alt="tahakom" class="h-20" />
+    </div>
+    <div userName>Welcome {{ username() }}</div>
+  </app-nav-bar>
+}
 <router-outlet></router-outlet>
