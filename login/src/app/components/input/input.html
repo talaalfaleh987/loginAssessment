@@ -12,17 +12,21 @@
     [class.border-error]="hasError"
   />
   @if (isCheckbox()) {
-    <span class="text-sm" [class.text-error]="hasError">
-      {{ label() || placeholder() }}
-    </span>
+    <div class="flex items-center gap-2">
+      <span class="text-sm" [class.text-error]="hasError">
+        {{ label() || placeholder() }}
+      </span>
+    </div>
   }
-  @if (hasError) {
-    @for (error of errors(); track $index) {
-      @if (hasErrorByType(error.types)) {
-        <span class="text-sm text-error block">
-          {{ error.message }}
-        </span>
+  <div class="min-h-[20px]">
+    @if (hasError) {
+      @for (error of errors(); track $index) {
+        @if (hasErrorByType(error.types)) {
+          <span class="text-sm text-error block">
+            {{ error.message }}
+          </span>
+        }
       }
     }
-  }
+  </div>
 </div>
