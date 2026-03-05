@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBar } from './components/nav-bar/nav-bar';
+import { SessionStorageKeys } from './enums/session-storage.enum';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,11 @@ import { NavBar } from './components/nav-bar/nav-bar';
 })
 export class App {
   protected readonly title = signal('login');
-  username = signal(sessionStorage.getItem('username') || '');
 
   get isLoggedIn() {
-    return sessionStorage.getItem('isLoggedIn') === 'true';
+    return sessionStorage.getItem(SessionStorageKeys.LOGGED_IN) === 'true';
+  }
+  get userName() {
+    return sessionStorage.getItem(SessionStorageKeys.USERNAME) || '';
   }
 }

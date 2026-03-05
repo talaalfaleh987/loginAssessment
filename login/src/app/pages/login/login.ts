@@ -51,6 +51,6 @@ export class Login {
     sessionStorage.setItem(SessionStorageKeys.LOGGED_IN, 'true');
     sessionStorage.setItem(SessionStorageKeys.USERNAME, this.form.value.username ?? '');
 
-    this.router.navigateByUrl(RouterPath.Pages.HOME).then(() => window.location.reload());
+    void this.router.navigateByUrl(RouterPath.Pages.HOME);
   }
 }
